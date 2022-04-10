@@ -9,6 +9,7 @@ const server = createServer((req, res) => {
         req.on('data', chunk => {
             body += chunk.toString();
         });
+        console.log(body);
         req.on('end', () => {
             if('' !== secret){
                 const { createHmac } = require('crypto');
@@ -28,9 +29,7 @@ const server = createServer((req, res) => {
                 console.log(e);
             }
         })
-        console.log(`body.ref: ${body.ref}`)
-        console.log(body)
-        console.log(`body.repository.name: ${body.repository.name}`)
+        console.log(`body.ref: ${body.ref}`);
         if('object' === typeof body){
             if('refs/heads/main' === body.ref){
                 const { exec } = require('child_process');
