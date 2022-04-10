@@ -28,8 +28,9 @@ const server = createServer((req, res) => {
                 console.log(e);
             }
         })
+        console.log('No problems so far!')
         if('object' === typeof body){
-            if('refs/heads/master' === body.ref){
+            if('refs/heads/main' === body.ref){
                 const { exec } = require('child_process');
                 const command = `cd ../${body.repository.name} && git pull origin main`;
                 console.log("Executing command")
