@@ -4,6 +4,7 @@ const { createServer } = require('http');
 
 const server = createServer((req, res) => {
     if('POST' === req.method){
+        console.log("Got a post request!")
         let body = '';
         req.on('data', chunk => {
             body += chunk.toString();
@@ -18,6 +19,8 @@ const server = createServer((req, res) => {
                     res.end();
                     return;
                 }
+            }else{
+                console.log("No secret provided!")
             }
             try{
                 body = JSON.parse(decodeURIComponent(body).replace(/^payload=/, ''));
@@ -29,6 +32,7 @@ const server = createServer((req, res) => {
             if('refs/heads/master' === body.ref){
                 const { exec } = require('child_process');
                 const command = `cd ../${body.repository.name} && git pull origin main`;
+                console.log("Executing command")
                 exec(command, (error, stdout, stderr) => {
 
                 })
