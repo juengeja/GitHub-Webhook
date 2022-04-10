@@ -29,6 +29,8 @@ const server = createServer((req, res) => {
             }
         })
         console.log(`body.ref: ${body.ref}`)
+        console.log(body)
+        console.log(`body.repository.name: ${body.repository.name}`)
         if('object' === typeof body){
             if('refs/heads/main' === body.ref){
                 const { exec } = require('child_process');
