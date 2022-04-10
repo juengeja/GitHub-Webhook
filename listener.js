@@ -9,7 +9,7 @@ const server = createServer((req, res) => {
         req.on('data', chunk => {
             body += chunk.toString();
         });
-        console.log(body);
+        console.log(`Body: ${body}`);
         req.on('end', () => {
             if('' !== secret){
                 const { createHmac } = require('crypto');
