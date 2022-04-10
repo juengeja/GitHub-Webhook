@@ -28,7 +28,7 @@ const server = createServer((req, res) => {
                 console.log(e);
             }
         })
-        console.log('No problems so far!')
+        console.log(`body.ref: ${body.ref}`)
         if('object' === typeof body){
             if('refs/heads/main' === body.ref){
                 const { exec } = require('child_process');
